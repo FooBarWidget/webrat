@@ -11,7 +11,7 @@
 Webrat lets you quickly write expressive and robust acceptance tests for a Ruby
 web application. 
 
-== Features
+=== Features
 
 * Browser Simulator for expressive, high level acceptance testing without the
   performance hit and browser dependency of Selenium or Watir (See Webrat::Session)
@@ -21,7 +21,7 @@ web application.
 * Supports popular test frameworks: RSpec, Cucumber, Test::Unit and Shoulda
 * Webrat::Matchers API for verifying rendered HTML using CSS, XPath, etc.
 
-== Example
+=== Example
 
   class SignupTest < ActionController::IntegrationTest
   
@@ -41,7 +41,9 @@ Behind the scenes, Webrat will ensure:
 * If a URL is invalid, the test will fail.
 * If a page load or form submission is unsuccessful, the test will fail.
 
-== Installing Nokogiri
+== Installation
+
+=== Installing Nokogiri
 
 Users of Debian Linux (e.g. Ubuntu) need to run:
 
@@ -49,25 +51,63 @@ Users of Debian Linux (e.g. Ubuntu) need to run:
 
 Otherwise the Nokogiri gem, which Webrat depends on, won't install properly.
 
-== Install for Rails
+=== Installing Webrat
 
 To install the latest release as a gem:
 
   sudo gem install webrat
   
-To install the latest code as a plugin: (_Note:_ This may be less stable than using a released version)
+If you're using Rails you can also install the latest code as a plugin.
+(_Note:_ This may be less stable than using a released version)
+
+Rails 2:
 
   script/plugin install git://github.com/brynary/webrat.git
 
-In your test_helper.rb or env.rb (for Cucumber) add:
+Rails 3:
+
+  rails plugin install git://github.com/brynary/webrat.git
+
+Please read the 'Integration' section as well.
+
+== Integration
+
+=== Vanilla Rails 2 or Rails 3
+
+In your test_helper.rb add:
 
   require "webrat"
   
   Webrat.configure do |config|
     config.mode = :rails
   end
+
+If you have a Gemfile, add:
+
+  gem "webrat"
+
+=== Rails 2 or Rails 3, with Cucumber
+
+In your env.rb add:
+
+  require "webrat"
   
-== Install with Merb
+  Webrat.configure do |config|
+    config.mode = :rails
+  end
+
+If you have a Gemfile, add:
+
+  gem "webrat"
+
+=== Rails 2 or Rails 3, with RSpec
+
+You don't need to anything, RSpec automatically configures Webrat. Just
+make sure Webrat is in your Gemfile:
+
+  gem "webrat"
+
+=== Merb
 
 Merb 1.0 has built-in, seamless Webrat support. Just start using
 methods from Webrat::Session in your specs.
