@@ -6,6 +6,9 @@
 require "nokogiri"
 require "webrat/core/matchers"
 
-Spec::Runner.configure do |config|
-  config.include(Webrat::Matchers, :type => [:controller, :helper, :view])
+# RSpec 2 automatically integrates with Webrat and does not need to be configured.
+if !defined?(RSpec)
+  Spec::Runner.configure do |config|
+    config.include(Webrat::Matchers, :type => [:controller, :helper, :view])
+  end
 end

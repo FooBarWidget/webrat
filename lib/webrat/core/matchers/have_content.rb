@@ -1,6 +1,5 @@
 module Webrat
   module Matchers
-
     class HasContent #:nodoc:
       def initialize(content)
         @content = content
