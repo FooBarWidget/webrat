@@ -7,5 +7,6 @@ require "nokogiri"
 require "webrat/core/matchers"
 
 Spec::Runner.configure do |config|
-  config.include(Webrat::Matchers, :type => [:controller, :helper, :view])
+  config.include(Webrat::Methods, :type => [:integration, :controller, :helper, :view])
+  config.include(Webrat::Matchers, :type => [:integration, :controller, :helper, :view])
 end

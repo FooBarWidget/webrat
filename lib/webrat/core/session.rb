@@ -22,7 +22,7 @@ module Webrat
 
   def self.adapter_class
     case Webrat.configuration.mode
-    when :rails
+    when :rails, :'rspec-rails'
       RailsAdapter
     when :merb
       MerbAdapter
